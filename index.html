@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account</title>
+    <script type="text/javascript">
+        var balance = 0;
+
+        function deposit() {
+            var amount = parseFloat(document.getElementById("depositInput").value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+            balance += amount;
+            document.getElementById("balance").innerHTML = balance.toFixed(2);
+        }
+
+        function withdraw() {
+            var amount = parseFloat(document.getElementById("withdrawInput").value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+            if (amount > balance) {
+                alert("Insufficient funds.");
+                return;
+            }
+            balance -= amount;
+            document.getElementById("balance").innerHTML = balance.toFixed(2);
+        }
+
+        function showBalance() {
+            alert("Current balance: $" + balance.toFixed(2));
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id = bankaccount>Bank Account</h1>
+    <p id = balance>Balance: $<span id="balance">0.00</span></p>
+    <div id="dep">
+    <label id=dep1 for="depositInput">Deposit:</label>
+    <input type="number" id="depositInput">
+    <button onclick="deposit()">Submit</button>
+</div>
+
+    <div id="wit">
+
+    <label id=with1 for="withdrawInput">Withdraw:</label>
+    <input type="number" id="withdrawInput">
+    <button onclick="withdraw()">Submit</button>
+</div>
+ 
+ 
+    <button id=cli1 onclick="showBalance()">Show Balance</button>
+
+</body>
+</html>
